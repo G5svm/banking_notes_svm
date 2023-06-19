@@ -68,3 +68,13 @@ def user_entries(variance, curtosis, skewness, entropy ):
   user_entry = [[variance, curtosis, skewness, entropy]]
   result = sv_model.predict(user_entry)
   return result[0]
+
+sv = SVC() # Função de classificação de SVC
+sv_model = sv.fit(x_train, y_train) # Treinando o modelo
+sv_preds = sv.predict(x_test) # Fazendo Previsoes
+sv_accuracy = accuracy_score(y_test, sv_preds) # Avaliando a Eficacia
+print("SVM Score -> ", sv_accuracy)
+
+#coeficiente de determinação 
+print ("Score Modelo Treinado -> ", sv_model.score(x_train, y_train)) 
+print ("Score do Modelo de Testes -> ", sv_model.score(x_test, y_test))
